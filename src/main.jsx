@@ -5,7 +5,8 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { ShopContextProvider } from './context/ShopContext'
 import { ToastContainer } from 'react-toastify'
-import { UserContextProvider } from './context/userContext'
+import { UserContextProvider } from './context/UserContext'
+
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
