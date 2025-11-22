@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { ShopContextProvider } from './context/ShopContext'
-import { UserContextProvider } from "./context/userContext";
+import { UserContextProvider } from "./context/UserContext";
 import { ToastContainer } from 'react-toastify'
 
 

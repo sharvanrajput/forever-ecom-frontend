@@ -16,7 +16,7 @@ import {
 import { assets } from "@/assets/assets"
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import { useContext, useEffect } from "react"
-import { UserContext } from "@/context/userContext"
+import { UserContext } from "@/context/UserContext"
 
 // Menu items.
 const items = [

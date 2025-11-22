@@ -2,7 +2,7 @@
 import { addToUserCart, getUserCart, listProducts, removeItemfromCart, updateItemQuentity } from "@/services/apis";
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { UserContext } from "./userContext";
+import { UserContext } from "./UserContext";
 
 export const ShopContext = createContext()
 

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { UserContext } from '@/context/userContext'
+import { UserContext } from '@/context/UserContext'
 import { api, loginUser, Register } from '@/services/apis'
 import { useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'

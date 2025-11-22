@@ -26,7 +26,7 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { UserContext } from "@/context/userContext";
+import { UserContext } from "@/context/UserContext";
 import { LayoutDashboard } from "lucide-react";
 import { api, Logout } from "@/services/apis";
 

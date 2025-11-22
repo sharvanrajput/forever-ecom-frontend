@@ -1,4 +1,4 @@
-import { UserContext } from '@/context/userContext'
+import { UserContext } from '@/context/UserContext'
 import { api, Logout } from '@/services/apis'
 import { LogOut } from 'lucide-react'
 import { useContext, useEffect } from 'react'

@@ -4,7 +4,7 @@ import { useContext, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import { UserContext } from '@/context/userContext'
+import { UserContext } from '@/context/UserContext'
 
 const Layout = () => {
 
