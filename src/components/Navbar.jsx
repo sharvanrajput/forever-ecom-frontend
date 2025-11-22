@@ -59,8 +59,6 @@ const Navbar = () => {
     const res = await Logout()
     localStorage.removeItem("token")
     console.log(res)
-    window.location.href = window.location.href
-
     setUser(null)
   }
 

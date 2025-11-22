@@ -96,7 +96,7 @@ const Login = () => {
           <form onSubmit={submitHandler}>
             <Input className={"rounded-none  mb-3"} onChange={logininput} value={logindata.email} type="email" name="email" placeholder="Email Address" />
             <Input className={"rounded-none  mb-3"} onChange={logininput} value={logindata.password} type="password" name="password" placeholder="Password" />
-            <p className='text-gray-400 text-center text-sm'>Already Have and Account? <Button type="button" onClick={() => setCurrentForm("Sign Up")} variant={"ghost"} className={"px-2 "} >Login</Button></p>
+            <p className='text-gray-400 text-center text-sm'>Already Have and Account? <Button type="button" onClick={() => setCurrentForm("Sign Up")} variant={"ghost"} className={"px-2 "} >Sign up</Button></p>
             <Button>Login</Button>
           </form>
         </div>
