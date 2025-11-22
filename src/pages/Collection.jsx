@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import ProductItem from '@/components/ProductItem';
-import { Label } from '@/components/ui/Label';
+import { Label } from '@/components/ui/label';
 import Searchbar from '@/components/Searchbar';
 import { RefreshCcw } from 'lucide-react';
 
