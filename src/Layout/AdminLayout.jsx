@@ -1,7 +1,7 @@
 import AdminHeader from '@/components/admin/AdminHeader'
 import { AppSidebar } from '@/components/admin/AppSidebar'
 import { SidebarProvider } from '@/components/ui/sidebar'
-import { UserContextProvider } from '@/context/UserContext'
+import { UserContextProvider } from '@/context/userContext'
 
 
 import React from 'react'
