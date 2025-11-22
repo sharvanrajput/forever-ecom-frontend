@@ -3,14 +3,15 @@ import { Input } from '@/components/ui/input'
 import { UserContext } from '@/context/userContext'
 import { api, loginUser, Register } from '@/services/apis'
 import { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
-  const {userData} = useContext(UserContext)
+  const { userData, setUser } = useContext(UserContext)
   const [currentform, setCurrentForm] = useState("Login")
+  const location = useLocation()
+  const token = localStorage.getItem("token")
   const navigate = useNavigate()
-
 
   const [logindata, setLogindata] = useState({
     email: "",
@@ -32,18 +33,16 @@ const Login = () => {
   }
 
 
-  const { setUser } = useContext(UserContext);
 
-  const getuserdata = () => {
+  const getuserdata = async () => {
     api.get("/user/me")
       .then(res => {
         console.log("Fetched User:", res.data.user);
-        setUser(res.data.user);   // <-- Store user in context
+        setUser(res.data.user);
       })
       .catch(err => {
         console.log("ERROR:", err.response?.data);
       });
-
   }
 
 
@@ -51,9 +50,9 @@ const Login = () => {
     e.preventDefault()
     if (currentform === "Login") {
       const res = await loginUser(logindata)
-      getuserdata()
+      localStorage.setItem("token", res.data.token)
+      await getuserdata();
       navigate("/")
-      console.log(res)
     }
   }
 
@@ -61,17 +60,15 @@ const Login = () => {
     e.preventDefault()
     if (currentform === "Sign Up") {
       const res = await Register(signupdata)
-      getuserdata()
+      localStorage.setItem("token", res.data.token)
+      await getuserdata();
       navigate("/")
-      console.log(res)
     }
   }
 
-  useEffect(()=>{
-    if (userData) {
-      navigate("/")
-    }
-  },[userData])
+  useEffect(() => {
+    getuserdata()
+  }, [token, location.pathname])
 
 
   return (

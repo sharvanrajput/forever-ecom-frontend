@@ -1,18 +1,19 @@
+import { UserContext } from '@/context/UserContext'
+import { api, Logout } from '@/services/apis'
 import { LogOut } from 'lucide-react'
+import { useContext, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu'
 import { SidebarTrigger } from '../ui/sidebar'
-import { useNavigate } from 'react-router-dom'
-import { useContext, useEffect } from 'react'
-import { UserContext } from '@/context/UserContext'
-import { api, Logout } from '@/services/apis'
 
 const AdminHeader = () => {
 
-  const { userData, setUser } = useContext(UserContext)
+  const { userData, setUser, setuserinfo } = useContext(UserContext)
+  const token = localStorage.getItem("token")
   const navigate = useNavigate()
 
-  const getuserdata = () => {
+  const getuserdata = async () => {
     api.get("/user/me")
       .then(res => {
         console.log("Fetched User:", res.data.user);
@@ -36,13 +37,33 @@ const AdminHeader = () => {
 
   const handleLogout = async () => {
     const res = await Logout()
-    setUser(null)
+    localStorage.removeItem("token")
+    setuserinfo(null)
     navigate("/")
   }
 
+useEffect(() => {
+  if (token) {
+    getuserdata()
+  }
+}, [token])
+
+
+
+
+  const locaiton = useLocation()
+
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [locaiton.pathname]);
+
+
+
 
   return (
-    <nav className=' shadow py-2 sticky top-0 bg-white'>
+    <nav className=' shadow py-2 sticky top-0 bg-white z-20'>
       <div className="container">
         <div className="flex justify-between ">
 

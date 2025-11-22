@@ -28,7 +28,7 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { UserContext } from "@/context/userContext";
 import { LayoutDashboard } from "lucide-react";
-import { Logout } from "@/services/apis";
+import { api, Logout } from "@/services/apis";
 
 
 
@@ -38,18 +38,37 @@ const Navbar = () => {
   const { userData, setUser } = useContext(UserContext)
   const locaiton = useLocation()
   const navigate = useNavigate()
-
+  const token = localStorage.getItem("token")
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [locaiton.pathname]);
 
+  const getuserdata = async () => {
+    api.get("/user/me")
+      .then(res => {
+        console.log("Fetched User:", res.data.user);
+        setUser(res.data.user);   // <-- Store user in context
+      })
+      .catch(err => {
+        console.log("ERROR:", err.response?.data);
+      });
+  }
 
   const handleLogout = async () => {
     const res = await Logout()
+    localStorage.removeItem("token")
     console.log(res)
+    window.location.href = window.location.href
+
     setUser(null)
   }
+
+  useEffect(() => {
+    if (token) {
+      getuserdata()
+    }
+  }, [token])
 
 
   // const user = { id: "", role: "" }
