@@ -51,17 +51,7 @@ const placeholder = () => {
       }
     }
 
-    if (method === "stripe") {
-      if (cartItems.length > 0) {
-        const res = await PlaceOrdercodWithStripe(amount, formdata)
-        toast.success(res.data.message)
-        const { session_url } = res.data
-        window.location.replace(session_url)
-        // setcarttmpty()
-      } else {
-        toast.error("cart is empty pick item")
-      }
-    }
+    
 
 
 
@@ -119,14 +109,7 @@ const placeholder = () => {
                 <Title text1={"PAYMENT"} text2={"METHOD"} />
               </div>
               <div className="flex gap-3  flex-col lg:flex-row ">
-                <div onClick={() => setMethod("stripe")} className="flex items-center gap-3 border p-2 mx-3 cursor-pointer">
-                  <p className={`min-w-3.5 h-3.5  border rounded-full ${method === "stripe" ? "bg-green-500" : "bg-transparent"}`}></p>
-                  <img src={assets.stripe_logo} alt="" />
-                </div>
-                <div onClick={() => setMethod("raxerpay")} className="flex items-center gap-3 border p-2 mx-3 cursor-pointer">
-                  <p className={`min-w-3.5 h-3.5  border rounded-full ${method === "raxerpay" ? "bg-green-500" : "bg-transparent"}`}></p>
-                  <img src={assets.razorpay_logo} alt="" />
-                </div>
+                
                 <div onClick={() => setMethod("cod")} className="flex items-center gap-3 border p-2 mx-3 cursor-pointer">
                   <p className={`min-w-3.5 h-3.5  border rounded-full ${method === "cod" ? "bg-green-500" : "bg-transparent"}`}></p>
                   <p className="text-gray-500 text-sm font-medium mx-4">CASH ON DELIVERY</p>
